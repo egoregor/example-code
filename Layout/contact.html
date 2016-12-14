@@ -1,0 +1,82 @@
+<!-- From angular view -->
+
+<div class="contactPage">
+    <div class="mainContent">
+        <div class="contactForm">
+            <div class="row">
+                <div class="contactForm-title">Contact</div>
+                <div class="contactForm-data">
+                    <div class="contactForm-data-address">
+                        <p class="contactForm-data-mainAddress">Dunsborough Holiday Homes</p>
+                        <p>7/1 Congressional Drive</p>
+                        <p>Dunsborough WA 6281</p>
+                    </div>
+                    <div class="contactForm-data-address">
+                        <p>Email: <a href="mailto:bookings@dhh.com.au">bookings@dhh.com.au</a></p>
+                        <p>Phone: <a href="tel:61897567866">(+61 8) 9756 7866</a></p>
+                        <p>Fax: (+61 8) 9756 8424</p>
+                    </div>
+                </div>
+                <p class="sent bg-success" ng-show="sent">
+                    Thank you. Your enquiry has been submitted and we will get back to you shortly.
+                </p>
+                <form name="form" ng-hide="sent" ng-submit="submit()" novalidate>
+                    <div class="heading">
+                        Enquiry Form:
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" placeholder="First Name" name="formFirstname" required ng-model="contact.firstName">
+                            <span class="invalidError" ng-show="form.formFirstname.$touched && form.formFirstname.$error.required">* First name is required.</span>
+                            <span class="invalidError" ng-show="form.formFirstname.$touched && form.formFirstname.$error.pattern">* Invalid first name.</span>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" placeholder="Last Name" name="formLastname" required ng-model="contact.lastName">
+                            <span class="invalidError" ng-show="form.formLastname.$touched && form.formLastname.$error.required">* Last name is required.</span>
+                            <span class="invalidError" ng-show="form.formLastname.$touched && form.formLastname.$error.pattern">* Invalid last name.</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <input type="email" class="form-control" placeholder="Email" name="formEmail" required ng-model="contact.email">
+                            <span class="invalidError" ng-show="form.formEmail.$touched && form.formEmail.$error.required">* Email is required.</span>
+                            <span class="invalidError" ng-show="form.formEmail.$touched && form.formEmail.$error.email">* Invalid email address.</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <input type="phone" class="form-control" placeholder="Phone" name="formPhone" required ng-model="contact.phone">
+                            <span class="invalidError" ng-show="form.formPhone.$touched && form.formPhone.$error.required">* Phone is required.</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label for="regarding">Regarding</label>
+                            <select class="form-control" id="regarding" name="formRegarding" required ng-model="contact.regarding">
+                                <option></option>
+                                <option>Holiday Properties</option>
+                                <option>Rental Properties</option>
+                                <option>Bookings</option>
+                                <option>Other</option>
+                            </select>
+                            <span class="invalidError" ng-show="form.formRegarding.$touched && form.formRegarding.$error.required">* Regarding is required.</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <textarea class="form-control" placeholder="Enquiry" name="formEnquiry" required ng-model="contact.enquiry" />
+                            <span class="invalidError" ng-show="form.formEnquiry.$touched && form.formEnquiry.$error.required">* Enquiry is required.</span>
+                        </div>
+                    </div>
+                    <div class="buttons">
+                        <button class="red-button" ng-hide="loading">Submit</button>
+                        <button class="red-button loading" ng-show="loading"></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="right">
+            <img src="/img/aboutUs/office.jpg">
+        </div>
+    </div>
+</div>
